@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 async function getPost(id) {
   const res = await fetch("http://localhost:4000/posts/" + id, {
     next: {
@@ -8,8 +12,17 @@ async function getPost(id) {
   return res.json();
 }
 
-export default async function PostDetails({ params }) {
-  const post = await getPost(params.id);
+export default function PostDetails({ params }) {
+  const [post, setPost] = useState({});
+  useEffect(() => {
+    const fetchPost = async () => {
+      const res = await getPost(params.id);
+      setPost(res);
+    };
+
+    fetchPost();
+  }, [params.id]);
+
   return (
     <main>
       <section className="post_header">

@@ -8,7 +8,7 @@ body {
 }
 
 button {
-  @apply bg-primary px-3 py-2 rounded-lg flex justify-between items-center gap-2 text-white text-sm;
+  @apply bg-primary px-3 py-2 align-middle rounded-lg flex justify-between items-center gap-2 text-white text-sm;
 }
 
 button:hover {
@@ -16,7 +16,15 @@ button:hover {
 }
 
 nav {
-  @apply flex justify-between items-center pb-4 border-b-2 border-gray-200 m-auto max-w-7xl text-2xl;
+  @apply flex justify-between items-center p-4 border-b-2 border-gray-200 m-auto max-w-7xl shadow-sm;
+}
+
+nav h1 {
+  @apply text-2xl;
+}
+
+nav button {
+  @apply align-middle;
 }
 
 h1,
@@ -29,7 +37,7 @@ main {
 }
 
 form {
-  @apply py-4 px-7 bg-primary bg-opacity-5 rounded-md block mx-auto min-w-fit w-1/2;
+  @apply py-4 px-7 bg-primary bg-opacity-5 shadow-md rounded-md block mx-auto my-4 min-w-fit w-1/2;
 }
 
 form label {
@@ -40,4 +48,50 @@ form input,
 form textarea {
   @apply block mt-2 my-4 px-2 py-1 rounded-sm w-full;
   resize: none;
+}
+
+.post_head {
+  @apply flex justify-between items-center pt-6 pl-4 pr-2;
+}
+
+.post_head button {
+  @apply align-middle bg-opacity-80;
+}
+
+.post_head button:hover {
+  @apply bg-opacity-50;
+}
+
+.grid_view {
+  @apply grid grid-cols-3 gap-3 items-center place-items-start;
+}
+
+article {
+  @apply bg-white shadow-xl rounded-lg p-4;
+}
+
+.list_view {
+  @apply grid grid-cols-1 gap-3;
+}
+
+.post_body {
+  @apply border-gray-200 bg-white w-full mx-4 mt-4 shadow-md rounded-lg p-8;
+}
+
+.post_header {
+  @apply font-bold text-left text-base;
+}
+
+.card_button {
+  @apply flex float-right gap-4 h-5
+}
+
+.edit_button {
+  @apply bg-transparent text-red-600 text-base mt-0
+}
+
+@media screen and (max-width: 768px) {
+  .grid_view {
+    @apply grid grid-cols-2 justify-center gap-2 place-items-center;
+  }
 }

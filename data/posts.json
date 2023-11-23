@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "title": "Post 1 ",
+      "content": "This is a new Post cos the earlier version was edited and deleted.\n\nIt was edited again",
+      "createdAt": "Thu, 23 Nov 2023 15:35:27 GMT",
+      "id": 1700751523682
+    },
+    {
+      "id": 1700753502503,
+      "title": "Post 2",
+      "content": "This a post to check full functionality",
+      "createdAt": "Thu, 23 Nov 2023 15:31:42 GMT"
+    }
+  ]
+}

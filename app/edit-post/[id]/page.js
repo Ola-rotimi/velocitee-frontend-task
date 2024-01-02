@@ -4,9 +4,7 @@ import { editPost, getPostById } from "@/app/service/post-api";
 import { useEffect, useState } from "react";
 
 export default function EditPost({ params }) {
-  const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -33,9 +31,8 @@ export default function EditPost({ params }) {
     };
     try {
       editPost(id, updatedPost);
-      setIsLoading(false);
-      setIsSuccess(true);
       setTimeout(() => {
+        setIsLoading(false);
         window.location.href = "/";
       }, 1000);
     } catch (err) {
@@ -61,7 +58,8 @@ export default function EditPost({ params }) {
       />
       {isLoading ? (
         <button
-          className="bg-primary px-3 py-2 align-middle rounded-lg flex justify-between items-center gap-2 text-white text-sm"
+          className="bg-grey px-3 py-2 align-middle rounded-lg flex justify-between items-center gap-2 text-white text-sm"
+          type="button"
           disabled
         >
           Updating Post...

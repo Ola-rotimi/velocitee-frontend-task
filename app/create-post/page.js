@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPost } from "../service/post-api";
 
 export default function CreatePost() {
   const [title, setTitle] = useState("");
@@ -18,13 +19,7 @@ export default function CreatePost() {
       createdAt: new Date().toUTCString(),
     };
     try {
-      await fetch("http://localhost:4000/posts/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newPost),
-      });
+      await createPost(newPost);
       setIsLoading(false);
       setIsSuccess(true);
       setTimeout(() => {

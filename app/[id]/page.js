@@ -1,22 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-async function getPost(id) {
-  const res = await fetch("http://localhost:4000/posts/" + id, {
-    next: {
-      revalidate: 0,
-    },
-  });
-
-  return res.json();
-}
+import { getPostById } from "../service/post-api"
 
 export default function PostDetails({ params }) {
   const [post, setPost] = useState({});
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await getPost(params.id);
+      const res = await getPostById(params.id);
       setPost(res);
     };
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { editPost, getPostById } from "@/app/service/post-api";
 import { useEffect, useState } from "react";
 
 export default function EditPost({ params }) {
@@ -13,9 +14,8 @@ export default function EditPost({ params }) {
 
   useEffect(() => {
     const getPost = async () => {
-      const response = await fetch("http://localhost:4000/posts/" + id);
-      const post = await response.json();
-      const { title, content } = post;
+      const response = await getPostById(id);
+      const { title, content } = response;
       setTitle(title);
       setContent(content);
     };
@@ -32,13 +32,7 @@ export default function EditPost({ params }) {
       createdAt: new Date().toUTCString(),
     };
     try {
-      await fetch("http://localhost:4000/posts/" + id, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedPost),
-      });
+      editPost(id, updatedPost);
       setIsLoading(false);
       setIsSuccess(true);
       setTimeout(() => {

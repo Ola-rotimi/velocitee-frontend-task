@@ -1,16 +1,22 @@
 {
   "posts": [
     {
-      "title": "Post 1 ",
-      "content": "This is a new Post cos the earlier version was edited and deleted.\n\nIt was edited again",
-      "createdAt": "Thu, 23 Nov 2023 15:35:27 GMT",
-      "id": 1700751523682
+      "id": 1700759568409,
+      "title": "Fresh Post",
+      "content": "This Post was created after Deployment.\n\nAnd it actually works!!!",
+      "createdAt": "Thu, 23 Nov 2023 17:12:48 GMT"
     },
     {
-      "id": 1700753502503,
-      "title": "Post 2",
-      "content": "This a post to check full functionality",
-      "createdAt": "Thu, 23 Nov 2023 15:31:42 GMT"
+      "id": 1704199399592,
+      "title": "Post Attempt",
+      "content": "This is a new Post attempt after codebase update",
+      "createdAt": "Tue, 02 Jan 2024 12:43:19 GMT"
+    },
+    {
+      "id": 1704208613818,
+      "title": "Fresh Post",
+      "content": "This is a fresh Post that was created after codebase was created",
+      "createdAt": "Tue, 02 Jan 2024 15:16:53 GMT"
     }
   ]
 }

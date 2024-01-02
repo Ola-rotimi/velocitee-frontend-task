@@ -1,39 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
+import { getPost, deletePost } from "./service/post-api";
 
 export default function Page() {
   const [isGrid, setIsGrid] = useState(false);
   const [posts, setPosts] = useState([]);
 
-  const handleGridChange = () => {
-    setIsGrid(!isGrid);
-  };
-
   useEffect(() => {
     const fetchPost = async () => {
-      try {
-        const res = await fetch("http://localhost:4000/posts").then((res) =>
-          res.json()
-        );
-        setPosts(res);
-      } catch (err) {
-        console.log(err);
-      }
+      const res = await getPost();
+      setPosts(res);
     };
 
     fetchPost();
   }, []);
 
+  const handleGridChange = () => {
+    setIsGrid(!isGrid);
+  };
+
   const handleDelete = async (e) => {
     const id = e.target.value;
     const confirm = window.confirm("Are you sure?");
     if (confirm) {
-      const res = await fetch("http://localhost:4000/posts/" + id, {
-        method: "DELETE",
-      });
-      const data = await res.json();
+      await deletePost(id);
       alert("Post Deleted");
       window.location.reload();
     }
@@ -54,7 +46,7 @@ export default function Page() {
       </section>
       <section className={isGrid ? "grid_view" : "list_view"}>
         {posts.map((post) => (
-          <article key={post.id}>
+          <article className="post_body" key={post.id}>
             <section className="card_button">
               <Link href={`/edit-post/${post.id}`} className="m-0">
                 Edit
@@ -68,7 +60,7 @@ export default function Page() {
               </button>
             </section>
             <Link href="/[id]" as={`/${post.id}`}>
-              <h2>{post.title}</h2>
+              <h2>{post.title.slice(0, 20)} </h2>
               <p>{post.content.slice(0, 50)}...</p>
             </Link>
           </article>
